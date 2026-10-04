@@ -148,8 +148,9 @@ def api(secret, path, method='GET', body=None, timeout=10):
 
 def delay_test(secret, name, settings):
     try:
-        query = urllib.parse.urlencode({'url': settings['test_url'], 'timeout': settings['max_delay_ms']})
-        result = api(secret, '/proxies/' + urllib.parse.quote(name, safe='') + '/delay?' + query)
+        query = urllib.parse.urlencode({'url': settings['test_url'], 'timeout': settings['max_delay_ms'], 'expected': '204'})
+        encoded = urllib.parse.quote(name, safe='')
+        result = api(secret, '/providers/proxies/' + encoded + '/' + encoded + '/healthcheck?' + query)
         delay = result.get('delay', 0)
         return (delay, name) if 0 < delay <= settings['max_delay_ms'] else None
     except Exception:

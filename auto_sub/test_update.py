@@ -6,6 +6,8 @@ from pathlib import Path
 import subprocess
 import tempfile
 import time
+import threading
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import unittest
 from unittest.mock import patch
 
@@ -16,6 +18,57 @@ VLESS = 'vless://00000000-0000-4000-8000-000000000001@1.1.1.1:443?security=reali
 
 
 class SubscriptionTests(unittest.TestCase):
+    def test_real_core_latency_api_for_provider_proxy(self):
+        binary = os.environ.get('MIHOMO_BIN', '/tmp/free-node-mihomo')
+        if not Path(binary).is_file():
+            self.skipTest('Mihomo not installed')
+        class LocalProxy(BaseHTTPRequestHandler):
+            def do_CONNECT(self):
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.flush()
+                self.rfile.readline()
+                while self.rfile.readline() not in {b'\r\n', b'\n', b''}:
+                    pass
+                time.sleep(0.02)
+                self.wfile.write(b'HTTP/1.1 204 No Content\r\nConnection: close\r\n\r\n')
+                self.wfile.flush()
+                self.close_connection = True
+            def do_GET(self):
+                time.sleep(0.02)
+                self.send_response(204)
+                self.end_headers()
+            def log_message(self, *args):
+                pass
+        server = ThreadingHTTPServer(('127.0.0.1', 0), LocalProxy)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with tempfile.TemporaryDirectory() as folder:
+                p = Path(folder)
+                uri = f'http://127.0.0.1:{server.server_port}#n-fixture'
+                cfg = update.test_configuration({'n-fixture': uri}, p, 'fixture')
+                (p / 'config.json').write_text(json.dumps(cfg))
+                proc = subprocess.Popen([binary, '-d', folder, '-f', str(p / 'config.json')], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                try:
+                    for _ in range(100):
+                        try:
+                            providers = update.api('fixture', '/providers/proxies')['providers']
+                            if providers['n-fixture']['proxies']:
+                                break
+                        except Exception:
+                            pass
+                        time.sleep(0.05)
+                    result = update.delay_test('fixture', 'n-fixture', {'test_url': 'http://example.test/generate_204', 'max_delay_ms': 1200})
+                    self.assertIsNotNone(result)
+                    self.assertGreaterEqual(result[0], 15)
+                finally:
+                    proc.terminate()
+                    proc.wait(timeout=5)
+        finally:
+            server.shutdown()
+            server.server_close()
+
     def test_extract_base64_and_malformed(self):
         self.assertEqual(update.extract(base64.b64encode((SS + '\n' + VLESS).encode()).decode()), [SS, VLESS])
         self.assertEqual(update.extract('not a subscription'), [])
