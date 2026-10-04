@@ -124,6 +124,20 @@ def configuration(provider, testing=False, secret=''):
     return config
 
 
+def test_configuration(nodes, work, secret):
+    # A malformed URI can reject a whole Mihomo provider. Load each candidate
+    # separately so one broken public entry cannot discard all valid nodes.
+    providers = {}
+    for name, uri in nodes.items():
+        filename = name + '.txt'
+        (work / filename).write_text(uri, encoding='utf-8')
+        providers[name] = {'type': 'file', 'path': './' + filename, 'override': {'skip-cert-verify': False}}
+    config = configuration({}, True, secret)
+    config['proxy-providers'] = providers
+    config['proxy-groups'][0]['use'] = list(providers)
+    return config
+
+
 def api(secret, path, method='GET', body=None, timeout=10):
     req = urllib.request.Request('http://127.0.0.1:19090' + path, data=None if body is None else json.dumps(body).encode(), method=method,
                                  headers={'Authorization': 'Bearer ' + secret, 'Content-Type': 'application/json'})
@@ -187,7 +201,7 @@ def main():
               'location': os.getenv('RUNNER_NAME', 'local execution environment'),
               'measurement': 'HTTPS 1 MiB short download including handshake; not sustained bandwidth; not user-local reachability',
               'thresholds': {k: settings[k] for k in ['max_delay_ms', 'min_speed_kib_s', 'download_bytes']}, 'sources': []}
-    nodes, hosts = {}, {}
+    nodes, hosts, recent = {}, {}, set()
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
         futures = {pool.submit(fetch_source, url): url for url in settings['sources']}
         for future in concurrent.futures.as_completed(futures):
@@ -199,6 +213,8 @@ def main():
                     try:
                         name, normalized, host = normalize(uri)
                         nodes[name], hosts[name] = normalized, host
+                        if url in settings['sources'][:3]:
+                            recent.add(name)
                     except Exception:
                         pass
             except Exception as e:
@@ -217,6 +233,7 @@ def main():
                     priority.append(name)
             except Exception:
                 pass
+    priority.extend(sorted(recent - set(priority)))
     remaining = sorted(set(nodes) - set(priority))
     random.Random(datetime.now(timezone.utc).strftime('%Y%m%d%H')).shuffle(remaining)
     names = (priority + remaining)[:settings['max_candidates']]
@@ -228,22 +245,24 @@ def main():
     secret = secrets.token_hex(24)
     with tempfile.TemporaryDirectory(prefix='free-node-sub-') as folder:
         work = Path(folder)
-        (work / 'candidates.txt').write_text('\n'.join(nodes.values()), encoding='utf-8')
-        provider = {'type': 'file', 'path': './candidates.txt', 'override': {'skip-cert-verify': False}}
-        (work / 'config.json').write_text(json.dumps(configuration(provider, True, secret)))
+        (work / 'config.json').write_text(json.dumps(test_configuration(nodes, work, secret)))
         binary = str(Path(os.environ.get('MIHOMO_BIN', '/tmp/free-node-mihomo')).resolve())
         with (work / 'core.log').open('w') as log:
             subprocess.run([binary, '-t', '-d', folder, '-f', str(work / 'config.json')], stdout=log, stderr=log, check=True, timeout=30)
             proc = subprocess.Popen([binary, '-d', folder, '-f', str(work / 'config.json')], stdout=log, stderr=log)
             try:
+                stable, previous_count = 0, -1
                 for _ in range(100):
                     if proc.poll() is not None:
                         raise RuntimeError('Mihomo exited during startup')
                     try:
-                        loaded = api(secret, '/providers/proxies/checked')['proxies']
-                        if loaded:
+                        providers = api(secret, '/providers/proxies')['providers']
+                        loaded = [p for k, v in providers.items() if k in nodes for p in v.get('proxies', [])]
+                        stable = stable + 1 if len(loaded) == previous_count else 0
+                        previous_count = len(loaded)
+                        if loaded and stable >= 5:
                             break
-                        time.sleep(0.1)
+                        time.sleep(0.2)
                     except Exception:
                         time.sleep(0.1)
                 else:

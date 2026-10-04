@@ -96,6 +96,34 @@ class SubscriptionTests(unittest.TestCase):
                 proc.terminate()
                 proc.wait(timeout=5)
 
+    def test_invalid_native_uri_does_not_poison_valid_nodes(self):
+        binary = os.environ.get('MIHOMO_BIN', '/tmp/free-node-mihomo')
+        if not Path(binary).is_file():
+            self.skipTest('Mihomo not installed')
+        name, uri, _ = update.normalize(SS)
+        bad = 'ss://' + base64.b64encode(b'unknown-cipher:pw').decode() + '@1.1.1.1:443#bad'
+        bad_name, bad_uri, _ = update.normalize(bad)
+        with tempfile.TemporaryDirectory() as folder:
+            p = Path(folder)
+            cfg = update.test_configuration({name: uri, bad_name: bad_uri}, p, 'fixture')
+            (p / 'config.json').write_text(json.dumps(cfg))
+            proc = subprocess.Popen([binary, '-d', folder, '-f', str(p / 'config.json')], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            try:
+                loaded = []
+                for _ in range(100):
+                    try:
+                        providers = update.api('fixture', '/providers/proxies')['providers']
+                        loaded = [item['name'] for k, v in providers.items() if k in {name, bad_name} for item in v['proxies']]
+                        if name in loaded:
+                            break
+                    except Exception:
+                        pass
+                    time.sleep(0.05)
+                self.assertEqual(loaded, [name])
+            finally:
+                proc.terminate()
+                proc.wait(timeout=5)
+
 
 if __name__ == '__main__':
     unittest.main()
