@@ -1,0 +1,19 @@
+{
+  "sources": [
+    "https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodefree.txt",
+    "https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/v2rayshare.txt",
+    "https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/yudou66.txt",
+    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/main/V2Ray-Config-By-EbraSha-All-Type.txt",
+    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/main/all_extracted_configs.txt"
+  ],
+  "max_candidates": 600,
+  "max_download_tests": 80,
+  "max_output": 40,
+  "max_delay_ms": 1200,
+  "min_speed_kib_s": 128,
+  "download_bytes": 1048576,
+  "download_timeout_s": 15,
+  "test_url": "https://www.gstatic.com/generate_204",
+  "download_url": "https://speed.cloudflare.com/__down?bytes=1048576",
+  "subscription_base": "https://raw.githubusercontent.com/jiejiebuxiu/jiejiebuxiuv2ray/main/output"
+}
