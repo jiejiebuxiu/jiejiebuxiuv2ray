@@ -1,0 +1,116 @@
+{
+  "tested_at_utc": "2026-10-04T05:24:14.221164+00:00",
+  "location": "GitHub Actions 1000000014",
+  "measurement": "HTTPS 1 MiB short download including handshake; not sustained bandwidth; not user-local reachability",
+  "thresholds": {
+    "max_delay_ms": 1200,
+    "min_speed_kib_s": 128,
+    "download_bytes": 1048576
+  },
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/v2rayshare.txt",
+      "fetched": 23
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodefree.txt",
+      "fetched": 23
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/yudou66.txt",
+      "fetched": 164
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/main/all_extracted_configs.txt",
+      "fetched": 36003
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/main/V2Ray-Config-By-EbraSha-All-Type.txt",
+      "fetched": 35711
+    }
+  ],
+  "unique_candidates": 31480,
+  "core_loaded": 510,
+  "https_latency_passed": 20,
+  "download_tested": 20,
+  "download_passed": 15,
+  "status": "success",
+  "published": 15,
+  "nodes": [
+    {
+      "name": "01 | 4749.8 KiB/s | 50 ms",
+      "delay_ms": 50,
+      "speed_kib_s": 4749.8
+    },
+    {
+      "name": "02 | 2757.6 KiB/s | 94 ms",
+      "delay_ms": 94,
+      "speed_kib_s": 2757.6
+    },
+    {
+      "name": "03 | 1460.5 KiB/s | 942 ms",
+      "delay_ms": 942,
+      "speed_kib_s": 1460.5
+    },
+    {
+      "name": "04 | 1401.1 KiB/s | 95 ms",
+      "delay_ms": 95,
+      "speed_kib_s": 1401.1
+    },
+    {
+      "name": "05 | 802.4 KiB/s | 475 ms",
+      "delay_ms": 475,
+      "speed_kib_s": 802.4
+    },
+    {
+      "name": "06 | 697.9 KiB/s | 511 ms",
+      "delay_ms": 511,
+      "speed_kib_s": 697.9
+    },
+    {
+      "name": "07 | 675.9 KiB/s | 548 ms",
+      "delay_ms": 548,
+      "speed_kib_s": 675.9
+    },
+    {
+      "name": "08 | 672.1 KiB/s | 546 ms",
+      "delay_ms": 546,
+      "speed_kib_s": 672.1
+    },
+    {
+      "name": "09 | 641.2 KiB/s | 789 ms",
+      "delay_ms": 789,
+      "speed_kib_s": 641.2
+    },
+    {
+      "name": "10 | 607.5 KiB/s | 681 ms",
+      "delay_ms": 681,
+      "speed_kib_s": 607.5
+    },
+    {
+      "name": "11 | 538.6 KiB/s | 470 ms",
+      "delay_ms": 470,
+      "speed_kib_s": 538.6
+    },
+    {
+      "name": "12 | 500.3 KiB/s | 774 ms",
+      "delay_ms": 774,
+      "speed_kib_s": 500.3
+    },
+    {
+      "name": "13 | 406.3 KiB/s | 333 ms",
+      "delay_ms": 333,
+      "speed_kib_s": 406.3
+    },
+    {
+      "name": "14 | 379.3 KiB/s | 726 ms",
+      "delay_ms": 726,
+      "speed_kib_s": 379.3
+    },
+    {
+      "name": "15 | 307.8 KiB/s | 477 ms",
+      "delay_ms": 477,
+      "speed_kib_s": 307.8
+    }
+  ]
+}

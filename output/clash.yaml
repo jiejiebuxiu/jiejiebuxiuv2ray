@@ -1,0 +1,51 @@
+{
+  "mixed-port": 7890,
+  "allow-lan": false,
+  "mode": "rule",
+  "log-level": "info",
+  "proxy-providers": {
+    "checked": {
+      "type": "http",
+      "url": "https://raw.githubusercontent.com/jiejiebuxiu/jiejiebuxiuv2ray/main/output/v2ray.txt",
+      "path": "./providers/free-node-sub.txt",
+      "interval": 14400,
+      "override": {
+        "skip-cert-verify": false
+      },
+      "health-check": {
+        "enable": true,
+        "url": "https://www.gstatic.com/generate_204",
+        "interval": 300
+      }
+    }
+  },
+  "proxy-groups": [
+    {
+      "name": "自动选择",
+      "type": "url-test",
+      "use": [
+        "checked"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "tolerance": 80
+    },
+    {
+      "name": "节点选择",
+      "type": "select",
+      "use": [
+        "checked"
+      ],
+      "proxies": [
+        "自动选择"
+      ]
+    }
+  ],
+  "rules": [
+    "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve",
+    "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve",
+    "IP-CIDR,172.16.0.0/12,DIRECT,no-resolve",
+    "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
+    "MATCH,节点选择"
+  ]
+}
