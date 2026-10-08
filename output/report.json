@@ -1,6 +1,6 @@
 {
-  "tested_at_utc": "2026-10-08T15:43:17.228735+00:00",
-  "location": "GitHub Actions 1000000073",
+  "tested_at_utc": "2026-10-08T21:24:04.815243+00:00",
+  "location": "GitHub Actions 1000000077",
   "measurement": "HTTPS 1 MiB short download including handshake; not sustained bandwidth; not user-local reachability",
   "thresholds": {
     "max_delay_ms": 1200,
@@ -22,220 +22,220 @@
     },
     {
       "url": "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/main/all_extracted_configs.txt",
-      "fetched": 17914
+      "fetched": 18119
     },
     {
       "url": "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/main/V2Ray-Config-By-EbraSha-All-Type.txt",
-      "fetched": 17777
+      "fetched": 18079
     }
   ],
-  "unique_candidates": 14636,
-  "core_loaded": 561,
-  "https_latency_passed": 50,
-  "download_tested": 50,
-  "download_passed": 46,
+  "unique_candidates": 14650,
+  "core_loaded": 554,
+  "https_latency_passed": 56,
+  "download_tested": 56,
+  "download_passed": 50,
   "status": "success",
   "published": 40,
   "nodes": [
     {
-      "name": "01 | 2634.4 KiB/s | 159 ms",
-      "delay_ms": 159,
-      "speed_kib_s": 2634.4
+      "name": "01 | 2941.9 KiB/s | 89 ms",
+      "delay_ms": 89,
+      "speed_kib_s": 2941.9
     },
     {
-      "name": "02 | 2450.9 KiB/s | 113 ms",
-      "delay_ms": 113,
-      "speed_kib_s": 2450.9
+      "name": "02 | 2704.1 KiB/s | 243 ms",
+      "delay_ms": 243,
+      "speed_kib_s": 2704.1
     },
     {
-      "name": "03 | 2254.0 KiB/s | 196 ms",
-      "delay_ms": 196,
-      "speed_kib_s": 2254.0
+      "name": "03 | 2538.5 KiB/s | 132 ms",
+      "delay_ms": 132,
+      "speed_kib_s": 2538.5
     },
     {
-      "name": "04 | 2032.9 KiB/s | 250 ms",
-      "delay_ms": 250,
-      "speed_kib_s": 2032.9
+      "name": "04 | 2412.2 KiB/s | 144 ms",
+      "delay_ms": 144,
+      "speed_kib_s": 2412.2
     },
     {
-      "name": "05 | 2020.5 KiB/s | 140 ms",
-      "delay_ms": 140,
-      "speed_kib_s": 2020.5
+      "name": "05 | 2148.0 KiB/s | 282 ms",
+      "delay_ms": 282,
+      "speed_kib_s": 2148.0
     },
     {
-      "name": "06 | 1847.9 KiB/s | 215 ms",
-      "delay_ms": 215,
-      "speed_kib_s": 1847.9
-    },
-    {
-      "name": "07 | 1765.6 KiB/s | 173 ms",
-      "delay_ms": 173,
-      "speed_kib_s": 1765.6
-    },
-    {
-      "name": "08 | 1666.8 KiB/s | 150 ms",
+      "name": "06 | 1880.8 KiB/s | 150 ms",
       "delay_ms": 150,
-      "speed_kib_s": 1666.8
+      "speed_kib_s": 1880.8
     },
     {
-      "name": "09 | 1576.8 KiB/s | 164 ms",
-      "delay_ms": 164,
-      "speed_kib_s": 1576.8
+      "name": "07 | 1781.3 KiB/s | 135 ms",
+      "delay_ms": 135,
+      "speed_kib_s": 1781.3
     },
     {
-      "name": "10 | 1564.3 KiB/s | 232 ms",
+      "name": "08 | 1768.4 KiB/s | 144 ms",
+      "delay_ms": 144,
+      "speed_kib_s": 1768.4
+    },
+    {
+      "name": "09 | 1765.2 KiB/s | 224 ms",
+      "delay_ms": 224,
+      "speed_kib_s": 1765.2
+    },
+    {
+      "name": "10 | 1710.3 KiB/s | 232 ms",
       "delay_ms": 232,
-      "speed_kib_s": 1564.3
+      "speed_kib_s": 1710.3
     },
     {
-      "name": "11 | 1522.2 KiB/s | 238 ms",
-      "delay_ms": 238,
-      "speed_kib_s": 1522.2
+      "name": "11 | 1645.8 KiB/s | 243 ms",
+      "delay_ms": 243,
+      "speed_kib_s": 1645.8
     },
     {
-      "name": "12 | 1415.1 KiB/s | 280 ms",
-      "delay_ms": 280,
-      "speed_kib_s": 1415.1
+      "name": "12 | 1610.2 KiB/s | 295 ms",
+      "delay_ms": 295,
+      "speed_kib_s": 1610.2
     },
     {
-      "name": "13 | 1365.2 KiB/s | 645 ms",
-      "delay_ms": 645,
-      "speed_kib_s": 1365.2
+      "name": "13 | 1336.4 KiB/s | 228 ms",
+      "delay_ms": 228,
+      "speed_kib_s": 1336.4
     },
     {
-      "name": "14 | 942.9 KiB/s | 678 ms",
-      "delay_ms": 678,
-      "speed_kib_s": 942.9
+      "name": "14 | 1244.7 KiB/s | 885 ms",
+      "delay_ms": 885,
+      "speed_kib_s": 1244.7
     },
     {
-      "name": "15 | 820.7 KiB/s | 339 ms",
-      "delay_ms": 339,
-      "speed_kib_s": 820.7
+      "name": "15 | 852.6 KiB/s | 233 ms",
+      "delay_ms": 233,
+      "speed_kib_s": 852.6
     },
     {
-      "name": "16 | 818.3 KiB/s | 690 ms",
-      "delay_ms": 690,
-      "speed_kib_s": 818.3
+      "name": "16 | 847.1 KiB/s | 615 ms",
+      "delay_ms": 615,
+      "speed_kib_s": 847.1
     },
     {
-      "name": "17 | 812.9 KiB/s | 356 ms",
-      "delay_ms": 356,
-      "speed_kib_s": 812.9
+      "name": "17 | 777.2 KiB/s | 485 ms",
+      "delay_ms": 485,
+      "speed_kib_s": 777.2
     },
     {
-      "name": "18 | 801.7 KiB/s | 468 ms",
-      "delay_ms": 468,
-      "speed_kib_s": 801.7
+      "name": "18 | 775.6 KiB/s | 492 ms",
+      "delay_ms": 492,
+      "speed_kib_s": 775.6
     },
     {
-      "name": "19 | 786.8 KiB/s | 388 ms",
-      "delay_ms": 388,
-      "speed_kib_s": 786.8
+      "name": "19 | 742.5 KiB/s | 383 ms",
+      "delay_ms": 383,
+      "speed_kib_s": 742.5
     },
     {
-      "name": "20 | 786.2 KiB/s | 362 ms",
-      "delay_ms": 362,
-      "speed_kib_s": 786.2
+      "name": "20 | 741.6 KiB/s | 537 ms",
+      "delay_ms": 537,
+      "speed_kib_s": 741.6
     },
     {
-      "name": "21 | 783.0 KiB/s | 459 ms",
-      "delay_ms": 459,
-      "speed_kib_s": 783.0
+      "name": "21 | 735.4 KiB/s | 508 ms",
+      "delay_ms": 508,
+      "speed_kib_s": 735.4
     },
     {
-      "name": "22 | 780.3 KiB/s | 357 ms",
-      "delay_ms": 357,
-      "speed_kib_s": 780.3
+      "name": "22 | 734.7 KiB/s | 477 ms",
+      "delay_ms": 477,
+      "speed_kib_s": 734.7
     },
     {
-      "name": "23 | 775.2 KiB/s | 490 ms",
-      "delay_ms": 490,
-      "speed_kib_s": 775.2
+      "name": "23 | 726.3 KiB/s | 398 ms",
+      "delay_ms": 398,
+      "speed_kib_s": 726.3
     },
     {
-      "name": "24 | 772.9 KiB/s | 365 ms",
-      "delay_ms": 365,
-      "speed_kib_s": 772.9
+      "name": "24 | 708.5 KiB/s | 409 ms",
+      "delay_ms": 409,
+      "speed_kib_s": 708.5
     },
     {
-      "name": "25 | 769.3 KiB/s | 448 ms",
-      "delay_ms": 448,
-      "speed_kib_s": 769.3
+      "name": "25 | 703.3 KiB/s | 415 ms",
+      "delay_ms": 415,
+      "speed_kib_s": 703.3
     },
     {
-      "name": "26 | 763.2 KiB/s | 469 ms",
-      "delay_ms": 469,
-      "speed_kib_s": 763.2
+      "name": "26 | 698.2 KiB/s | 758 ms",
+      "delay_ms": 758,
+      "speed_kib_s": 698.2
     },
     {
-      "name": "27 | 758.9 KiB/s | 365 ms",
-      "delay_ms": 365,
-      "speed_kib_s": 758.9
+      "name": "27 | 694.0 KiB/s | 415 ms",
+      "delay_ms": 415,
+      "speed_kib_s": 694.0
     },
     {
-      "name": "28 | 754.3 KiB/s | 370 ms",
-      "delay_ms": 370,
-      "speed_kib_s": 754.3
+      "name": "28 | 688.4 KiB/s | 529 ms",
+      "delay_ms": 529,
+      "speed_kib_s": 688.4
     },
     {
-      "name": "29 | 751.2 KiB/s | 395 ms",
-      "delay_ms": 395,
-      "speed_kib_s": 751.2
+      "name": "29 | 681.4 KiB/s | 640 ms",
+      "delay_ms": 640,
+      "speed_kib_s": 681.4
     },
     {
-      "name": "30 | 748.4 KiB/s | 463 ms",
-      "delay_ms": 463,
-      "speed_kib_s": 748.4
+      "name": "30 | 680.2 KiB/s | 426 ms",
+      "delay_ms": 426,
+      "speed_kib_s": 680.2
     },
     {
-      "name": "31 | 741.1 KiB/s | 358 ms",
-      "delay_ms": 358,
-      "speed_kib_s": 741.1
+      "name": "31 | 677.8 KiB/s | 418 ms",
+      "delay_ms": 418,
+      "speed_kib_s": 677.8
     },
     {
-      "name": "32 | 730.8 KiB/s | 381 ms",
-      "delay_ms": 381,
-      "speed_kib_s": 730.8
+      "name": "32 | 677.8 KiB/s | 425 ms",
+      "delay_ms": 425,
+      "speed_kib_s": 677.8
     },
     {
-      "name": "33 | 726.0 KiB/s | 372 ms",
-      "delay_ms": 372,
-      "speed_kib_s": 726.0
+      "name": "33 | 673.0 KiB/s | 424 ms",
+      "delay_ms": 424,
+      "speed_kib_s": 673.0
     },
     {
-      "name": "34 | 710.4 KiB/s | 478 ms",
-      "delay_ms": 478,
-      "speed_kib_s": 710.4
+      "name": "34 | 654.8 KiB/s | 416 ms",
+      "delay_ms": 416,
+      "speed_kib_s": 654.8
     },
     {
-      "name": "35 | 698.4 KiB/s | 503 ms",
-      "delay_ms": 503,
-      "speed_kib_s": 698.4
+      "name": "35 | 654.5 KiB/s | 440 ms",
+      "delay_ms": 440,
+      "speed_kib_s": 654.5
     },
     {
-      "name": "36 | 683.9 KiB/s | 403 ms",
-      "delay_ms": 403,
-      "speed_kib_s": 683.9
+      "name": "36 | 647.3 KiB/s | 573 ms",
+      "delay_ms": 573,
+      "speed_kib_s": 647.3
     },
     {
-      "name": "37 | 656.2 KiB/s | 693 ms",
-      "delay_ms": 693,
-      "speed_kib_s": 656.2
+      "name": "37 | 632.3 KiB/s | 423 ms",
+      "delay_ms": 423,
+      "speed_kib_s": 632.3
     },
     {
-      "name": "38 | 649.9 KiB/s | 594 ms",
-      "delay_ms": 594,
-      "speed_kib_s": 649.9
+      "name": "38 | 628.6 KiB/s | 562 ms",
+      "delay_ms": 562,
+      "speed_kib_s": 628.6
     },
     {
-      "name": "39 | 636.2 KiB/s | 443 ms",
-      "delay_ms": 443,
-      "speed_kib_s": 636.2
+      "name": "39 | 620.8 KiB/s | 428 ms",
+      "delay_ms": 428,
+      "speed_kib_s": 620.8
     },
     {
-      "name": "40 | 540.6 KiB/s | 737 ms",
-      "delay_ms": 737,
-      "speed_kib_s": 540.6
+      "name": "40 | 549.7 KiB/s | 872 ms",
+      "delay_ms": 872,
+      "speed_kib_s": 549.7
     }
   ]
 }
